@@ -23,7 +23,7 @@
 	var kkagent = '${kkagent}';
     var baseUrl = '${baseUrl}'.endsWith('/') ? '${baseUrl}' : '${baseUrl}' + '/';
     if (kkagent === 'true' || !url.startsWith(baseUrl)) {
-        url = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
+        url = baseUrl + 'getFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
     }
     document.getElementsByTagName('iframe')[0].src =  "${baseUrl}eml/index.html?file="+encodeURIComponent(url);
     document.getElementsByTagName('iframe')[0].height = document.documentElement.clientHeight - 10;
@@ -34,7 +34,7 @@
         var fm = document.getElementsByTagName("iframe")[0];
         fm.height = window.document.documentElement.clientHeight - 10;
     }
-	
+
   		 /*初始化水印*/
  if (!!window.ActiveXObject || "ActiveXObject" in window)
 {

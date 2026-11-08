@@ -23,13 +23,13 @@
         --radius-lg: 16px;
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
-    
+
     body {
         background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -39,21 +39,21 @@
         justify-content: center;
         align-items: flex-start;
     }
-    
+
     .container {
         max-width: 1400px;
         width: 100%;
         margin: 0 auto;
         padding: 20px;
     }
-    
+
     .gallery-header {
         text-align: center;
         margin-bottom: 30px;
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .gallery-title {
         color: white;
         font-size: 2rem;
@@ -61,13 +61,13 @@
         margin-bottom: 8px;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-    
+
     .file-meta {
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.95rem;
         letter-spacing: 0.5px;
     }
-    
+
     /* 单张图片时的居中展示样式 */
     .single-image-container {
         display: flex;
@@ -76,7 +76,7 @@
         min-height: 70vh;
         margin: 20px 0;
     }
-    
+
     .single-image-wrapper {
         position: relative;
         max-width: 90%;
@@ -88,12 +88,12 @@
         transition: var(--transition);
         cursor: pointer;
     }
-    
+
     .single-image-wrapper:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
     }
-    
+
     .single-photo {
         width: 100%;
         height: auto;
@@ -101,7 +101,7 @@
         max-height: 80vh;
         object-fit: contain;
     }
-    
+
     .gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -109,7 +109,7 @@
         align-items: start;
         justify-items: center;
     }
-    
+
     .photo-wrapper {
         position: relative;
         width: 100%;
@@ -121,17 +121,17 @@
         transition: var(--transition);
         cursor: pointer;
     }
-    
+
     .photo-wrapper:hover {
         transform: translateY(-10px) scale(1.02);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     }
-    
+
     .photo-wrapper:hover .photo-overlay {
         opacity: 1;
         transform: translateY(0);
     }
-    
+
     .my-photo {
         width: 100%;
         height: auto;
@@ -142,7 +142,7 @@
         background: #f8f9fa;
         padding: 10px;
     }
-    
+
     .photo-overlay {
         position: absolute;
         bottom: 0;
@@ -155,14 +155,14 @@
         transform: translateY(10px);
         transition: var(--transition);
     }
-    
+
     .photo-index {
         font-size: 0.9rem;
         color: rgba(255, 255, 255, 0.95);
         font-weight: 600;
         text-align: center;
     }
-    
+
     .photo-loading {
         position: absolute;
         top: 50%;
@@ -177,15 +177,15 @@
         opacity: 0;
         transition: opacity 0.3s;
     }
-    
+
     .photo-loading.active {
         opacity: 1;
     }
-    
+
     @keyframes photo-spin {
         to { transform: translate(-50%, -50%) rotate(360deg); }
     }
-    
+
     .photo-placeholder {
         width: 100%;
         height: 300px;
@@ -194,12 +194,12 @@
         animation: placeholder-shimmer 2s linear infinite;
         border-radius: var(--radius-md);
     }
-    
+
     @keyframes placeholder-shimmer {
         0% { background-position: -40px 0; }
         100% { background-position: 40px 0; }
     }
-    
+
     .photo-error {
         position: relative;
         width: 100%;
@@ -214,20 +214,20 @@
         color: #dc3545;
         padding: 20px;
     }
-    
+
     .photo-error::before {
         content: "⚠️";
         font-size: 2.5rem;
         margin-bottom: 15px;
     }
-    
+
     .photo-error-message {
         font-size: 0.9rem;
         text-align: center;
         margin-top: 10px;
         color: var(--text-secondary);
     }
-    
+
     .fullscreen-modal {
         display: none;
         position: fixed;
@@ -242,12 +242,12 @@
         opacity: 0;
         transition: opacity 0.3s ease;
     }
-    
+
     .fullscreen-modal.active {
         display: flex;
         opacity: 1;
     }
-    
+
     .fullscreen-image {
         max-width: 95%;
         max-height: 95%;
@@ -256,12 +256,12 @@
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
         animation: modal-fade-in 0.3s ease-out;
     }
-    
+
     @keyframes modal-fade-in {
         from { opacity: 0; transform: scale(0.95); }
         to { opacity: 1; transform: scale(1); }
     }
-    
+
     .close-button {
         position: absolute;
         top: 25px;
@@ -280,12 +280,12 @@
         justify-content: center;
         z-index: 1001;
     }
-    
+
     .close-button:hover {
         background: rgba(255, 255, 255, 0.25);
         transform: rotate(90deg) scale(1.1);
     }
-    
+
     .navigation-button {
         position: absolute;
         top: 50%;
@@ -304,20 +304,20 @@
         justify-content: center;
         z-index: 1001;
     }
-    
+
     .navigation-button:hover {
         background: rgba(255, 255, 255, 0.25);
         transform: translateY(-50%) scale(1.1);
     }
-    
+
     .prev-button {
         left: 30px;
     }
-    
+
     .next-button {
         right: 30px;
     }
-    
+
     .image-counter {
         position: absolute;
         bottom: 30px;
@@ -331,95 +331,95 @@
         font-weight: 500;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
-    
+
     .watermark {
         pointer-events: none;
     }
-    
+
     /* 响应式设计 */
     @media (max-width: 1200px) {
         .gallery-grid {
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
         }
-        
+
         .container {
             padding: 15px;
         }
     }
-    
+
     @media (max-width: 768px) {
         .gallery-grid {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        
+
         .gallery-title {
             font-size: 1.5rem;
         }
-        
+
         .fullscreen-image {
             max-width: 98%;
             max-height: 98%;
         }
-        
+
         .navigation-button {
             width: 50px;
             height: 50px;
             font-size: 1.2rem;
         }
-        
+
         .close-button {
             width: 50px;
             height: 50px;
             font-size: 1.5rem;
         }
-        
+
         .single-image-wrapper {
             max-width: 95%;
         }
     }
-    
+
     @media (max-width: 480px) {
         .gallery-grid {
             grid-template-columns: 1fr;
         }
-        
+
         body {
             padding: 10px;
         }
-        
+
         .container {
             padding: 10px;
         }
-        
+
         .photo-wrapper:hover {
             transform: translateY(-5px) scale(1.01);
         }
-        
+
         .photo-wrapper {
             max-width: 100%;
         }
     }
-    
+
     /* 滚动条美化 */
     ::-webkit-scrollbar {
         width: 10px;
     }
-    
+
     ::-webkit-scrollbar-track {
         background: var(--secondary-bg);
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.2);
         border-radius: 5px;
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.3);
     }
-    
+
     /* 图片缩放提示 */
     .zoom-hint {
         position: fixed;
@@ -435,7 +435,7 @@
         transition: all 0.3s ease;
         z-index: 999;
     }
-    
+
     .zoom-hint.show {
         opacity: 1;
         transform: translateY(0);
@@ -446,11 +446,11 @@
 <div class="container">
     <div class="gallery-header">
         <h1 class="gallery-title">📸 图片预览</h1>
-        <div class="file-meta">${file.name} · 
+        <div class="file-meta">${file.name} ·
             <#if imgUrls?is_sequence>${imgUrls?size}<#else>1</#if>张图片
         </div>
     </div>
-    
+
     <#-- 处理imgUrls变量，确保它始终是一个列表 -->
     <#assign imageList = []>
     <#if imgUrls?is_string>
@@ -458,7 +458,7 @@
     <#elseif imgUrls?is_sequence>
         <#assign imageList = imgUrls>
     </#if>
-    
+
     <#if imageList?size == 1>
     <#-- 单张图片时的居中展示 -->
     <#assign img = imageList[0]>
@@ -467,12 +467,12 @@
     <#else>
         <#assign finalUrl="${baseUrl}${img}">
     </#if>
-    
+
     <div class="single-image-container">
         <div class="single-image-wrapper" data-index="0">
             <div class="photo-loading"></div>
-            <img class="single-photo" 
-                 src="${finalUrl}" 
+            <img class="single-photo"
+                 src="${finalUrl}"
                  data-original="${finalUrl}"
                  alt="${file.name}"
                  loading="lazy">
@@ -490,11 +490,11 @@
             <#else>
                 <#assign finalUrl="${baseUrl}${img}">
             </#if>
-            
+
             <div class="photo-wrapper" data-index="${img?index}">
                 <div class="photo-loading"></div>
-                <img class="my-photo" 
-                     src="${finalUrl}" 
+                <img class="my-photo"
+                     src="${finalUrl}"
                      data-original="${finalUrl}"
                      alt="图片 ${img?index + 1}"
                      loading="lazy">
@@ -516,7 +516,7 @@
     <button class="navigation-button prev-button" onclick="navigateImage(-1)">❮</button>
     <button class="navigation-button next-button" onclick="navigateImage(1)">❯</button>
     <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
-    <div class="image-counter" id="imageCounter">1 / 
+    <div class="image-counter" id="imageCounter">1 /
         <#if imgUrls?is_sequence>${imgUrls?size}<#else>1</#if>
     </div>
 </div>
@@ -530,39 +530,39 @@
             return 1;
         </#if>
     }
-    
+
     // 安全的DOM元素查找
     function safeQuerySelector(element, selector) {
         if (!element) return null;
         return element.querySelector(selector);
     }
-    
+
     // 页面初始化
     document.addEventListener('DOMContentLoaded', function() {
         console.log('页面加载完成，开始初始化...');
-        
+
         try {
             // 显示缩放提示
             showZoomHint();
-            
+
             // 处理跨域图片
             processImageUrls();
-            
+
             // 初始化图片交互
             initImageInteractions();
-            
+
             // 设置HEIC转换监听器
             initHeicConverter();
-            
+
             // 初始化水印
             initWatermark();
-            
+
             console.log('页面初始化完成');
         } catch (error) {
             console.error('页面初始化出错:', error);
         }
     });
-    
+
     // 显示缩放提示
     function showZoomHint() {
         const hint = document.getElementById('zoomHint');
@@ -575,19 +575,19 @@
             }, 1000);
         }
     }
-    
+
     // 图片交互功能
     function initImageInteractions() {
         const photoWrappers = document.querySelectorAll('.photo-wrapper, .single-image-wrapper');
         console.log('找到', photoWrappers.length, '个图片容器');
-        
+
         photoWrappers.forEach(wrapper => {
             const img = wrapper.querySelector('.my-photo') || wrapper.querySelector('.single-photo');
             if (!img) return;
-            
+
             // 显示加载动画
             const loadingElement = safeQuerySelector(wrapper, '.photo-loading');
-            
+
             // 检查图片是否已经加载完成
             if (img.complete) {
                 if (loadingElement) {
@@ -598,7 +598,7 @@
                 if (loadingElement) {
                     loadingElement.classList.add('active');
                 }
-                
+
                 // 绑定load事件
                 img.addEventListener('load', function() {
                     console.log('图片加载完成:', this.src);
@@ -610,7 +610,7 @@
                         }
                     }
                 });
-                
+
                 // 绑定error事件
                 img.addEventListener('error', function() {
                     console.warn('图片加载失败:', this.src);
@@ -623,21 +623,21 @@
                     }
                 });
             }
-            
+
             // 点击图片打开全屏
             wrapper.addEventListener('click', function() {
                 if (img) {
                     openFullscreen(img);
                 }
             });
-            
+
             // 添加鼠标悬停放大效果
             wrapper.addEventListener('mouseenter', function() {
                 if (img) {
                     img.style.transform = 'scale(1.05)';
                 }
             });
-            
+
             wrapper.addEventListener('mouseleave', function() {
                 if (img) {
                     img.style.transform = 'scale(1)';
@@ -645,7 +645,7 @@
             });
         });
     }
-    
+
     // 跨域处理
     function processImageUrls() {
         var kkagent = '${kkagent}';
@@ -658,8 +658,8 @@
             // 检查是否需要反代
             if (kkagent === 'true'|| !originalUrl.startsWith(baseUrl)) {
                 // 构建反代URL
-                var proxyUrl = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(originalUrl)) + "&key=" + kkkey;
-                
+                var proxyUrl = baseUrl + 'getFile?urlPath=' + encodeURIComponent(Base64.encode(originalUrl)) + "&key=" + kkkey;
+
                 // 如果当前src不是反代URL，则更新
                 if (img.src !== proxyUrl) {
                     img.src = proxyUrl;
@@ -667,15 +667,15 @@
             }
         });
     }
-    
+
     // HEIC转换器
     function initHeicConverter() {
         document.querySelectorAll('.my-photo, .single-photo').forEach(img => {
             if (!img) return;
-            
+
             img.addEventListener('error', async function() {
                 if (!this) return;
-                
+
                 this.title = this.alt || '图片加载失败';
                 try {
                     if (typeof document.ConvertHeicToPng === 'function') {
@@ -691,39 +691,39 @@
             });
         });
     }
-    
+
     // 全屏查看功能
     let currentImageIndex = 0;
     const totalImages = getTotalImages();
-    
+
     function openFullscreen(imgElement) {
         if (!imgElement) return;
-        
+
         const wrapper = imgElement.closest('.photo-wrapper, .single-image-wrapper');
         if (!wrapper) return;
-        
+
         const indexAttr = wrapper.getAttribute('data-index');
         currentImageIndex = indexAttr ? parseInt(indexAttr) : 0;
-        
+
         const fullscreenImage = document.getElementById('fullscreenImage');
         const imageCounter = document.getElementById('imageCounter');
-        
+
         if (fullscreenImage) {
             fullscreenImage.src = imgElement.src;
             fullscreenImage.alt = imgElement.alt || '全屏预览';
         }
-        
+
         if (imageCounter) {
             imageCounter.textContent = `${currentImageIndex + 1} / ${totalImages}`;
         }
-        
+
         const modal = document.getElementById('fullscreenModal');
         if (modal) {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
     }
-    
+
     function closeFullscreen() {
         const modal = document.getElementById('fullscreenModal');
         if (modal) {
@@ -731,34 +731,34 @@
             document.body.style.overflow = 'auto';
         }
     }
-    
+
     function navigateImage(direction) {
         currentImageIndex += direction;
-        
+
         if (currentImageIndex < 0) {
             currentImageIndex = totalImages - 1;
         } else if (currentImageIndex >= totalImages) {
             currentImageIndex = 0;
         }
-        
+
         const targetImage = document.querySelector(`[data-index="${currentImageIndex}"] .my-photo, [data-index="${currentImageIndex}"] .single-photo`);
         const fullscreenImage = document.getElementById('fullscreenImage');
         const imageCounter = document.getElementById('imageCounter');
-        
+
         if (targetImage && fullscreenImage) {
             fullscreenImage.src = targetImage.src;
             fullscreenImage.alt = targetImage.alt || '全屏预览';
         }
-        
+
         if (imageCounter) {
             imageCounter.textContent = `${currentImageIndex + 1} / ${totalImages}`;
         }
     }
-    
+
     // 键盘控制
     document.addEventListener('keydown', function(e) {
         const modal = document.getElementById('fullscreenModal');
-        
+
         if (modal && modal.classList.contains('active')) {
             if (e.key === 'Escape') {
                 closeFullscreen();
@@ -791,7 +791,7 @@
             }
         }
     });
-    
+
     // 水印初始化
     function initWatermark() {
         if (!!window.ActiveXObject || "ActiveXObject" in window) {
@@ -810,22 +810,22 @@
             }
         }
     }
-    
+
     // 防止模态框点击事件冒泡
     document.getElementById('fullscreenModal')?.addEventListener('click', function(e) {
         if (e.target === this) {
             closeFullscreen();
         }
     });
-    
+
     // 添加图片缩放功能
     document.getElementById('fullscreenModal')?.addEventListener('wheel', function(e) {
         if (!this.classList.contains('active')) return;
-        
+
         e.preventDefault();
         const img = document.getElementById('fullscreenImage');
         if (!img) return;
-        
+
         const currentScale = img.style.transform ? parseFloat(img.style.transform.replace('scale(', '').replace(')', '')) || 1 : 1;
         const delta = e.deltaY > 0 ? -0.1 : 0.1;
         const newScale = Math.max(0.5, Math.min(currentScale + delta, 3));

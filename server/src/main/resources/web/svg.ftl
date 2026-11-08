@@ -15,21 +15,21 @@
             position: relative;
             background: #f5f5f5;
         }
-        
+
         #svg-container {
             position: absolute;
             top: 0;
             left: 0;
             transition: transform 0.3s ease;
         }
-        
+
         #svg-container svg {
             display: block;
             max-width: 100%;
             max-height: 100%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .controls {
             position: fixed;
             bottom: 20px;
@@ -42,7 +42,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .control-btn {
             width: 40px;
             height: 40px;
@@ -57,24 +57,24 @@
             justify-content: center;
             transition: all 0.2s;
         }
-        
+
         .control-btn:hover {
             background: #0056b3;
             transform: scale(1.1);
         }
-        
+
         .control-btn:active {
             transform: scale(0.95);
         }
-        
+
         .control-btn.reset {
             background: #6c757d;
         }
-        
+
         .control-btn.reset:hover {
             background: #545b62;
         }
-        
+
         .zoom-display {
             position: fixed;
             top: 20px;
@@ -86,7 +86,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
         }
-        
+
         .loading {
             position: fixed;
             top: 50%;
@@ -133,7 +133,7 @@
 	var kkagent = '${kkagent}';
     var baseUrl = '${baseUrl}'.endsWith('/') ? '${baseUrl}' : '${baseUrl}' + '/';
     if (kkagent === 'true' || !url.startsWith(baseUrl)) {
-        url = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
+        url = baseUrl + 'getFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
     }
 
     // 加载并显示SVG
@@ -142,7 +142,7 @@
             showError('URL参数缺失');
             return;
         }
-        
+
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -154,28 +154,28 @@
                 document.querySelector('.loading').style.display = 'none';
                 svgContainer.innerHTML = svgText;
                 svgElement = svgContainer.querySelector('svg');
-                
+
                 if (svgElement) {
                     // 设置初始属性
                     svgElement.style.transformOrigin = 'center center';
                     svgElement.style.width = '100%';
                     svgElement.style.height = '100%';
-                    
+
                     // 重置视图
                     resetView();
-                    
+
                     // 添加拖拽功能
                     setupDragAndDrop();
-                    
+
                     // 添加鼠标滚轮缩放
                     setupWheelZoom();
-                    
+
                     // 添加键盘快捷键
                     setupKeyboardShortcuts();
-                    
+
                     // 添加触摸事件支持
                     setupTouchEvents();
-                    
+
                     // 初始更新显示
                     updateDisplay();
                 } else {
@@ -214,7 +214,7 @@
             isDragging = true;
             panStartX = e.touches[0].clientX;
             panStartY = e.touches[0].clientY;
-            
+
             const transform = svgContainer.style.transform;
             const match = transform.match(/translate\(([^)]+)\)/);
             if (match) {
@@ -225,7 +225,7 @@
                 startTranslateX = 0;
                 startTranslateY = 0;
             }
-            
+
             e.preventDefault();
         } else if (e.touches.length === 2) {
             e.preventDefault();
@@ -235,10 +235,10 @@
     // 处理触摸移动
     function handleTouchMove(e) {
         if (!isDragging || e.touches.length !== 1) return;
-        
+
         const dx = e.touches[0].clientX - panStartX;
         const dy = e.touches[0].clientY - panStartY;
-        
+
         updateTransform(startTranslateX + dx, startTranslateY + dy);
         e.preventDefault();
     }
@@ -253,7 +253,7 @@
         isDragging = true;
         startX = e.clientX;
         startY = e.clientY;
-        
+
         const transform = svgContainer.style.transform;
         const match = transform.match(/translate\(([^)]+)\)/);
         if (match) {
@@ -264,17 +264,17 @@
             startTranslateX = 0;
             startTranslateY = 0;
         }
-        
+
         svgContainer.style.cursor = 'grabbing';
     }
 
     // 拖拽中
     function drag(e) {
         if (!isDragging) return;
-        
+
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
-        
+
         updateTransform(startTranslateX + dx, startTranslateY + dy);
     }
 
@@ -288,14 +288,14 @@
     function setupWheelZoom() {
         svgContainer.addEventListener('wheel', function(e) {
             e.preventDefault();
-            
+
             const rect = svgContainer.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
-            
+
             const delta = e.deltaY > 0 ? -zoomStep : zoomStep;
             const newZoom = Math.min(maxZoom, Math.max(minZoom, zoomLevel + delta));
-            
+
             // 获取当前变换
             const transform = svgContainer.style.transform;
             let translateX = 0, translateY = 0;
@@ -305,21 +305,21 @@
                 translateX = parseFloat(parts[0]) || 0;
                 translateY = parseFloat(parts[1]) || 0;
             }
-            
+
             // 计算缩放中心点相对于容器中心的位置
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             const offsetX = mouseX - centerX;
             const offsetY = mouseY - centerY;
-            
+
             // 更新缩放级别
             const zoomChange = newZoom / zoomLevel;
             zoomLevel = newZoom;
-            
+
             // 调整位置以保持鼠标点位置不变
             translateX = translateX - offsetX * (zoomChange - 1);
             translateY = translateY - offsetY * (zoomChange - 1);
-            
+
             updateTransform(translateX, translateY);
             updateDisplay();
         });
@@ -330,7 +330,7 @@
         document.addEventListener('keydown', function(e) {
             // 避免在输入框中触发快捷键
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            
+
             switch(e.key) {
                 case '+':
                 case '=':
@@ -398,7 +398,7 @@
     function resetView() {
         zoomLevel = 1;
         rotationAngle = 0;
-        
+
         // 计算居中位置
         const containerRect = container.getBoundingClientRect();
         if (svgElement) {
@@ -409,14 +409,14 @@
         } else {
             updateTransform(0, 0);
         }
-        
+
         updateDisplay();
     }
 
     // 更新变换
     function updateTransform(translateX, translateY) {
         let transform = '';
-        
+
         // 如果有传入的平移值，使用它
         if (translateX !== undefined && translateY !== undefined) {
             transform += 'translate(' + translateX + 'px, ' + translateY + 'px)';
@@ -430,17 +430,17 @@
                 transform += 'translate(0px, 0px)';
             }
         }
-        
+
         // 应用缩放
         if (zoomLevel !== 1) {
             transform += ' scale(' + zoomLevel + ')';
         }
-        
+
         // 应用旋转
         if (rotationAngle !== 0) {
             transform += ' rotate(' + rotationAngle + 'deg)';
         }
-        
+
         svgContainer.style.transform = transform;
     }
 
@@ -462,10 +462,10 @@
     window.onload = function () {
         // 设置初始光标
         svgContainer.style.cursor = 'grab';
-        
+
         // 加载SVG
         loadSVG();
-        
+
         // 如果有水印初始化函数，调用它
         if (typeof initWaterMark === 'function') {
             initWaterMark();

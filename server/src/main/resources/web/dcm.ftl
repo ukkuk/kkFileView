@@ -10,7 +10,7 @@
 </head>
 	<style>
      .container{
-		width: 100%; 
+		width: 100%;
 		height: 98%;
 		max-width: 98%;
 		margin: auto;
@@ -58,10 +58,10 @@
 	var kkagent = '${kkagent}';
     var baseUrl = '${baseUrl}'.endsWith('/') ? '${baseUrl}' : '${baseUrl}' + '/';
     if (kkagent === 'true' || !url.startsWith(baseUrl)) {
-        url = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
+        url = baseUrl + 'getFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
     }
             "use strict";
-         
+
             var imageNames = [];
             for (var i = 1; i < 546; i++) {
                 imageNames.push(url);
@@ -73,7 +73,7 @@
             var imagePromises = imageIds.map(imageId => {
                 return cornerstone.loadAndCacheImage(imageId);
             });
-         
+
             var exampleData = {
                 stack: {
                     currentImageIdIndex: 0,

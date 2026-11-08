@@ -34,7 +34,7 @@
 	var kkagent = '${kkagent}';
     var baseUrl = '${baseUrl}'.endsWith('/') ? '${baseUrl}' : '${baseUrl}' + '/';
     if (kkagent === 'true' || !url.startsWith(baseUrl)) {
-        url = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
+        url = baseUrl + 'getFile?urlPath=' + encodeURIComponent(Base64.encode(url))+ "&key=${kkkey}";
     }
     var myp = document.getElementById('tiff');
     let pages;
@@ -52,8 +52,8 @@
     imageData = ctx.createImageData(canvas.width, canvas.height);
 } catch(e){
 // 修改异常处理部分，让旋转按钮与正常解析部分保持一致
-if (e.message.indexOf("CanvasRenderingContext2D")) 
-{ 
+if (e.message.indexOf("CanvasRenderingContext2D"))
+{
     var html = "";
     html += "<div class=\"img-area\">";
     html += "<div class=\"image-container\" style=\"position:relative;\">";
@@ -127,7 +127,7 @@ return;
             imgObj.onload = loadOne;
         }
          console.log(p);
-        
+
 var html = "";
 html += "<div class=\"img-area\">";
 html += "<div class=\"image-container\" style=\"position:relative;\">";
