@@ -41,7 +41,7 @@
         <ffmpeg.version>7.1.1-1.5.12</ffmpeg.version>
 
         <!-- ========== 压缩文件处理 ========== -->
-        <sevenzipjbinding.version>16.02-2.01</sevenzipjbinding.version>
+        <sevenzipjbinding.version>23.01-2.2</sevenzipjbinding.version>
         <junrar.version>7.5.5</junrar.version>
 
         <!-- ========== 缓存和存储 ========== -->
